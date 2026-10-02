@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/onedrop}
+    username: ${DATABASE_USERNAME:onedrop}
+    password: ${DATABASE_PASSWORD:onedrop}
+  sql:
+    init:
+      mode: always
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+server:
+  port: ${PORT:8080}
+onedrop:
+  matching:
+    location-max-age-minutes: ${LOCATION_MAX_AGE_MINUTES:60}
+    radii-km: 25,50,100,200
