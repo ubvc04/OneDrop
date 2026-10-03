@@ -13,6 +13,8 @@ spring:
 server:
   port: ${PORT:8080}
 onedrop:
+  lifecycle:
+    expiry-check-ms: ${EXPIRY_CHECK_MS:60000}
   matching:
     location-max-age-minutes: ${LOCATION_MAX_AGE_MINUTES:60}
     radii-km: 25,50,100,200

@@ -12,6 +12,9 @@ be made by qualified medical professionals or blood banks.
 
 The current MVP intentionally does not claim to provide authentication,
 notifications, or medical verification. Those must be added before public use.
+The API redacts phone numbers and exact coordinates from JSON responses, limits
+each user to five requests per day and three active requests, and automatically
+expires overdue requests.
 The API currently exposes user creation, availability/location updates, request
 creation/listing, and radius-based direct matching.
 
@@ -24,7 +27,8 @@ The `mobile` directory is a minimal Flutter client. Run `flutter pub get` and
 ## Next production steps
 
 - Add OTP authentication and authenticated ownership checks.
-- Add request abuse controls and Redis-backed rate limiting.
+- Replace the database request ceiling with authenticated, Redis-backed rate
+  limiting when OTP authentication is added.
 - Integrate FCM/APNs through a server-side notification worker.
 - Add consent, account deletion, reporting/blocking, verification, privacy
   policy, and terms of use.

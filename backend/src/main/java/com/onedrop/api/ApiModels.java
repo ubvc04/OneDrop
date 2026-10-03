@@ -1,6 +1,7 @@
 package com.onedrop.api;
 
 import jakarta.validation.constraints.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -28,10 +29,11 @@ public final class ApiModels {
             @NotNull @DecimalMin("-90.0") @DecimalMax("90.0") Double latitude,
             @NotNull @DecimalMin("-180.0") @DecimalMax("180.0") Double longitude) {}
 
-    public record UserResponse(UUID id, String name, String mobileNumber, String bloodGroup,
-                               boolean available, Double latitude, Double longitude, Instant locationUpdatedAt) {}
+    public record UserResponse(UUID id, String name, @JsonIgnore String mobileNumber, String bloodGroup,
+                               boolean available, @JsonIgnore Double latitude, @JsonIgnore Double longitude,
+                               @JsonIgnore Instant locationUpdatedAt) {}
 
-    public record RequestResponse(UUID id, UUID requesterId, String bloodGroup, int unitsRequired,
+    public record RequestResponse(UUID id, @JsonIgnore UUID requesterId, String bloodGroup, int unitsRequired,
                                   String hospital, String urgency, String additionalInformation,
                                   Double latitude, Double longitude, String status, Instant expiresAt) {}
 

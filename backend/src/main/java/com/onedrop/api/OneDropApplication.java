@@ -2,8 +2,10 @@ package com.onedrop.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
+@EnableScheduling
 public class OneDropApplication {
     public static void main(String[] args) {
         SpringApplication.run(OneDropApplication.class, args);
